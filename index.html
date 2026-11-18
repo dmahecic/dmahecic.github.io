@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dora Mahecic — Physicist & Quantitative Biologist</title>
+  <meta name="description" content="Dora Mahecic, postdoctoral fellow in the Paulsson lab at Harvard Medical School. Advanced microscopy, microfluidics and super-resolution imaging to study plasmid replication control, mitochondrial dynamics and cellular organelles.">
+  <link rel="canonical" href="https://dmahecic.github.io/">
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Dora Mahecic">
+  <meta property="og:description" content="Physicist turned quantitative biologist: microscopy, microfluidics and the physics of cellular processes.">
+  <meta property="og:url" content="https://dmahecic.github.io/">
+  <meta property="og:image" content="https://github.com/dmahecic.png?size=400">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@Dora_Mahecic">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Dora Mahecic",
+    "jobTitle": "Postdoctoral Fellow",
+    "affiliation": {"@type": "Organization", "name": "Harvard Medical School"},
+    "alumniOf": {"@type": "CollegeOrUniversity", "name": "École Polytechnique Fédérale de Lausanne (EPFL)"},
+    "url": "https://dmahecic.github.io/",
+    "image": "https://github.com/dmahecic.png?size=400",
+    "sameAs": ["https://github.com/dmahecic", "https://twitter.com/Dora_Mahecic", "https://orcid.org/0000-0003-1004-4771", "https://scholar.google.com/citations?user=FAnKd20AAAAJ"]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fbfaf8; --surface: #ffffff; --text: #1d2228; --muted: #5d6670;
+      --line: #e6e3de; --accent: #0f6b74; --accent-soft: #e3f1f2;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #111417; --surface: #181c20; --text: #e7eaed; --muted: #9aa4ae;
+              --line: #2a3036; --accent: #5cc2c9; --accent-soft: #16302f; }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--text);
+           font: 17px/1.65 Inter, system-ui, -apple-system, "Segoe UI", sans-serif; }
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+
+    nav { position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--bg) 88%, transparent);
+          backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+    nav .wrap { display: flex; gap: 22px; align-items: center; height: 56px; overflow-x: auto; }
+    nav .name { font-weight: 600; color: var(--text); text-decoration: none; margin-right: auto; white-space: nowrap; }
+    nav a.link { color: var(--muted); text-decoration: none; font-size: 15px; white-space: nowrap; }
+    nav a.link:hover { color: var(--accent); }
+
+    header.hero { padding: 64px 0 40px; display: grid; grid-template-columns: 148px 1fr; gap: 36px; align-items: center; }
+    .hero img { width: 148px; height: 148px; border-radius: 50%; object-fit: cover; border: 1px solid var(--line); }
+    h1, h2, h3 { font-family: "Source Serif 4", Georgia, serif; font-weight: 600; line-height: 1.2; }
+    h1 { font-size: 42px; margin: 0 0 6px; }
+    .role { color: var(--muted); margin: 0 0 18px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 999px;
+            border: 1px solid var(--line); background: var(--surface); color: var(--text);
+            text-decoration: none; font-size: 14px; }
+    .chip:hover { border-color: var(--accent); color: var(--accent); }
+    .chip svg { width: 15px; height: 15px; fill: currentColor; }
+
+    section { padding: 36px 0; border-top: 1px solid var(--line); }
+    h2 { font-size: 28px; margin: 0 0 18px; }
+    .lead { font-size: 19px; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 8px; }
+    .card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 20px; }
+    .card h3 { font-size: 19px; margin: 0 0 8px; }
+    .card p { margin: 0; color: var(--muted); font-size: 15.5px; }
+    .tag { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
+           color: var(--accent); background: var(--accent-soft); padding: 2px 8px; border-radius: 4px; margin-bottom: 10px; }
+
+    ol.pubs { list-style: none; padding: 0; margin: 0; }
+    ol.pubs li { padding: 14px 0; border-bottom: 1px dashed var(--line); }
+    ol.pubs li:last-child { border-bottom: 0; }
+    .pub-title { font-weight: 600; }
+    .pub-meta { color: var(--muted); font-size: 15px; }
+    .me { text-decoration: underline; text-decoration-color: var(--accent); }
+
+    .timeline { display: grid; gap: 14px; }
+    .timeline div { display: grid; grid-template-columns: 120px 1fr; gap: 16px; }
+    .timeline .when { color: var(--muted); font-variant-numeric: tabular-nums; }
+
+    footer { padding: 32px 0 48px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }
+
+    @media (max-width: 640px) {
+      body { font-size: 16px; }
+      header.hero { grid-template-columns: 1fr; text-align: left; padding-top: 40px; gap: 20px; }
+      .hero img { width: 112px; height: 112px; }
+      h1 { font-size: 34px; }
+      .timeline div { grid-template-columns: 1fr; gap: 2px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="wrap">
+      <a class="name" href="#top">Dora Mahecic</a>
+      <a class="link" href="#about">About</a>
+      <a class="link" href="#research">Research</a>
+      <a class="link" href="#publications">Publications</a>
+      <a class="link" href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <main class="wrap" id="top">
+    <header class="hero">
+      <img src="https://github.com/dmahecic.png?size=300" alt="Portrait of Dora Mahecic">
+      <div>
+        <h1>Dora Mahecic</h1>
+        <p class="role">Physicist &amp; quantitative biologist · Postdoctoral fellow, Paulsson lab, Harvard Medical School</p>
+        <div class="chips">
+          <a class="chip" href="mailto:dora_mahecic@hms.harvard.edu">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5h20v14H2V5zm2 2v.5l8 5 8-5V7H4zm16 2.8-8 5-8-5V17h16V9.8z"/></svg>Email</a>
+          <a class="chip" href="https://github.com/dmahecic">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.2c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg>GitHub</a>
+          <a class="chip" href="https://twitter.com/Dora_Mahecic">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.2 2.3h3.4l-7.4 8.4 8.7 11.5h-6.8l-5.3-7-6.1 7H1.3l7.9-9L.9 2.3h7l4.8 6.4 5.5-6.4zm-1.2 17.9h1.9L7 4.2H5l12 16z"/></svg>@Dora_Mahecic</a>
+          <a class="chip" href="https://scholar.google.com/citations?user=FAnKd20AAAAJ">Google Scholar</a>
+          <a class="chip" href="https://orcid.org/0000-0003-1004-4771">ORCID</a>
+          <!-- TODO: add your handle, then uncomment
+          <a class="chip" href="https://bsky.app/profile/HANDLE">Bluesky</a>
+          -->
+        </div>
+      </div>
+    </header>
+
+    <section id="about">
+      <h2>About</h2>
+      <p class="lead">I'm a physicist with a passion for experimental and quantitative biology. I build and apply new microscopy strategies to uncover the physical rules that govern biological processes.</p>
+      <p>As a postdoc in the lab of <a href="https://paulsson.hms.harvard.edu/">Prof. Johan Paulsson</a> at Harvard Medical School, I combine advanced microscopy with microfluidics to study how plasmids control their own replication.</p>
+      <p>I started out in super-resolution microscopy and biophysics. For my PhD with <a href="https://www.epfl.ch/labs/leb/">Prof. Suliana Manley</a> at EPFL (Switzerland), I developed high-throughput and adaptive super-resolution methods that make these techniques faster and gentler on living cells. I then used them to look at organelles in new ways, from the architecture of centrioles to randomness in mitochondrial division.</p>
+    </section>
+
+    <section id="research">
+      <h2>Research</h2>
+      <div class="cards">
+        <div class="card">
+          <span class="tag">Current</span>
+          <h3>Plasmid replication control</h3>
+          <p>Single-cell imaging and microfluidics to investigate the mechanisms plasmids use to control their own replication.</p>
+        </div>
+        <div class="card">
+          <span class="tag">Methods</span>
+          <h3>High-throughput super-resolution</h3>
+          <p>Homogeneous multifocal illumination that turns super-resolution microscopy into a large field-of-view, high-throughput technique.
+            <a href="https://github.com/dmahecic/simmla_w_mfFIFI">Simulation code →</a></p>
+        </div>
+        <div class="card">
+          <span class="tag">Methods</span>
+          <h3>Adaptive, event-driven microscopy</h3>
+          <p>Smart microscopes that detect rare events in real time and change acquisition on the fly, capturing more information with less light damage.
+            <a href="https://github.com/dmahecic/EDA">EDA tools →</a></p>
+        </div>
+        <div class="card">
+          <span class="tag">Biology</span>
+          <h3>Mitochondrial dynamics</h3>
+          <p>Live-cell super-resolution imaging of where and why mitochondria divide, and the role of chance in mitochondrial fission.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications">
+      <h2>Publications</h2>
+      <ol class="pubs">
+        <li><div class="pub-title"><a href="https://doi.org/10.1038/s41592-022-01589-x">Event-driven acquisition for content-enriched microscopy</a></div>
+            <div class="pub-meta"><span class="me">Mahecic D</span>, Stepp WL, Zhang C, Griffié J, Weigert M, Manley S · <em>Nature Methods</em> 19, 1262–1267 (2022)</div></li>
+        <li><div class="pub-title"><a href="https://doi.org/10.2533/chimia.2021.1004">Flipper probes for the community</a></div>
+            <div class="pub-meta">Assies L, García-Calvo J, … <span class="me">Mahecic D</span>, … Matile S · <em>Chimia</em> 75, 1004–1011 (2021)</div></li>
+        <li><div class="pub-title"><a href="https://doi.org/10.1038/s41586-021-03510-6">Distinct fission signatures predict mitochondrial degradation or biogenesis</a></div>
+            <div class="pub-meta">Kleele T, Rey T, Winter J, Zaganelli S, <span class="me">Mahecic D</span>, … Manley S · <em>Nature</em> 593, 435–439 (2021)</div></li>
+        <li><div class="pub-title"><a href="https://doi.org/10.1016/j.celrep.2021.108947">Mitochondrial membrane tension governs fission</a></div>
+            <div class="pub-meta"><span class="me">Mahecic D</span>, Carlini L, Kleele T, Colom A, Goujon A, Matile S, Roux A, Manley S · <em>Cell Reports</em> 35, 108947 (2021)</div></li>
+        <li><div class="pub-title"><a href="https://doi.org/10.1038/s41592-020-0859-z">Homogeneous multifocal excitation for high-throughput super-resolution imaging</a></div>
+            <div class="pub-meta"><span class="me">Mahecic D</span>, Gambarotto D, Douglass KM, … Guichard P, Manley S · <em>Nature Methods</em> 17, 726–733 (2020)</div></li>
+        <li><div class="pub-title"><a href="https://doi.org/10.1364/OE.395900">Characterization of flat-fielding systems for quantitative microscopy</a></div>
+            <div class="pub-meta">Ibrahim KA, <span class="me">Mahecic D</span>, Manley S · <em>Optics Express</em> 28, 22036–22048 (2020)</div></li>
+        <li><div class="pub-title"><a href="https://doi.org/10.1016/j.cbpa.2019.05.012">Strategies for increasing the throughput of super-resolution microscopies</a></div>
+            <div class="pub-meta"><span class="me">Mahecic D</span>, Testa I, Griffié J, Manley S · <em>Current Opinion in Chemical Biology</em> 51, 84–91 (2019) · Review</div></li>
+        <li><div class="pub-title"><a href="https://doi.org/10.1021/jacs.8b13189">Mechanosensitive fluorescent probes to image membrane tension in mitochondria, endoplasmic reticulum, and lysosomes</a></div>
+            <div class="pub-meta">Goujon A, Colom A, Straková K, Mercier V, <span class="me">Mahecic D</span>, Manley S, Sakai N, Roux A, Matile S · <em>JACS</em> 141, 3380–3384 (2019)</div></li>
+      </ol>
+      <p class="pub-meta" style="margin-top:14px">Full list and citations on <a href="https://scholar.google.com/citations?user=FAnKd20AAAAJ">Google Scholar</a> and <a href="https://orcid.org/0000-0003-1004-4771">ORCID</a>.</p>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>I'm always happy to talk about microscopy, single-cell biophysics or collaborations. Email me at
+        <a href="mailto:dora_mahecic@hms.harvard.edu">dora_mahecic@hms.harvard.edu</a> or find me on
+        <a href="https://twitter.com/Dora_Mahecic">X/Twitter</a>.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© Dora Mahecic · Hosted on GitHub Pages</div>
+  </footer>
+</body>
+</html>
