@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>High-throughput super-resolution · Dora Mahecic</title>
+  <meta name="description" content="Flat-field multifocal illumination that turns super-resolution microscopy into a high-throughput technique.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='black'/%3E%3Crect x='5' y='5' width='54' height='54' fill='none' stroke='%23ff2bd6' stroke-width='4'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='900' fill='%23ff2bd6' text-anchor='middle'%3EDM%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <nav>
+    <div class="wrap">
+      <a class="name" href="../">Dora Mahecic</a>
+      <a class="link" href="../#about">About</a>
+      <a class="link" href="../#research">Research</a>
+      <a class="link" href="../#publications">Publications</a>
+      <a class="link" href="../#contact">Contact</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <div class="crumb"><a href="../#research">← All research</a></div>
+    <article class="detail">
+      <span class="tag">Methods</span>
+      <h1>High-throughput super-resolution</h1>
+      <p class="lead">Making super-resolution microscopy fast and uniform enough to image hundreds of cells, or thousands of tiny structures, in a single session.</p>
+
+      <figure>
+        <img src="../images/super-resolution.jpg" alt="" onerror="this.closest('figure').remove()">
+      </figure>
+
+      <h2>The problem</h2>
+      <p>Super-resolution microscopy is now an established tool in biology, but throughput is still a bottleneck. Quantitative biology needs large datasets. Many super-resolution setups have small fields of view and uneven illumination, so a cell near the edge of the image is not measured the same way as one in the centre.</p>
+
+      <h2>Approach</h2>
+      <p>We developed multifocal flat illumination for field-independent imaging (mfFIFI) and integrated it into an instant structured illumination microscope (iSIM). This extends the field of view beyond 100 × 100 µm while keeping fast, multicolour, volumetric imaging at twice the diffraction-limited resolution. Stitching neighbouring fields extends coverage further, enabling live-cell super-resolution imaging of dozens of cells.</p>
+      <p>A companion study characterised and compared optical flat-fielding systems (refractive field-mapping beam shapers and a Köhler integrator) for widefield and multifocal illumination, to help others choose the right solution.</p>
+
+      <h2>What it enables</h2>
+      <p>Combining the flat-fielded iSIM with ultrastructure expansion microscopy, we collected 3D images of hundreds of centrioles in human cells, or thousands of purified <em>Chlamydomonas reinhardtii</em> centrioles, per hour, at an effective resolution of about 35 nm. Classifying and averaging these particles let us map post-translational modifications of centriolar microtubules in 3D and reveal differences in their coverage and positioning.</p>
+
+      <h2>Key papers</h2>
+      <ol class="pubs">
+        <li><div class="pub-title">Homogeneous multifocal excitation for high-throughput super-resolution imaging</div>
+            <div class="pub-meta"><span class="me">Mahecic D</span>, Gambarotto D, Douglass KM, … Guichard P, Manley S · <em>Nature Methods</em> 17, 726–733 (2020)</div>
+            <div class="pub-links"><a href="https://doi.org/10.1038/s41592-020-0859-z">Paper</a><a href="https://github.com/dmahecic/simmla_w_mfFIFI">Code</a><a href="https://doi.org/10.5281/zenodo.3613906">Data</a></div></li>
+        <li><div class="pub-title">Characterization of flat-fielding systems for quantitative microscopy</div>
+            <div class="pub-meta">Ibrahim KA, <span class="me">Mahecic D</span>, Manley S · <em>Optics Express</em> 28, 22036–22048 (2020)</div>
+            <div class="pub-links"><a href="https://doi.org/10.1364/OE.395900">Paper</a></div></li>
+        <li><div class="pub-title">Strategies for increasing the throughput of super-resolution microscopies</div>
+            <div class="pub-meta"><span class="me">Mahecic D</span>, Testa I, Griffié J, Manley S · <em>Current Opinion in Chemical Biology</em> 51, 84–91 (2019) · Review</div>
+            <div class="pub-links"><a href="https://doi.org/10.1016/j.cbpa.2019.05.012">Paper</a></div></li>
+      </ol>
+    </article>
+
+    <div class="next">
+      <a href="plasmids.html">← Plasmid replication control</a>
+      <a href="event-driven.html">Event-driven microscopy →</a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">© Dora Mahecic · Hosted on GitHub Pages</div>
+  </footer>
+</body>
+</html>
