@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en" data-family="fl" data-theme="fl-classic">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dora Mahecic — theme variations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&family=Archivo:wght@400;500;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============ shared structure ============ */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 17px/1.65 var(--body); transition: background .3s, color .3s; }
+a { color: var(--accent); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+nav.top { position: sticky; top: 0; z-index: 10; }
+nav.top .wrap { display: flex; align-items: center; height: 60px; gap: 28px; }
+nav.top .name { margin-right: auto; text-decoration: none; color: var(--text); font-weight: 600; white-space: nowrap; }
+nav.top .links { display: flex; gap: 26px; }
+nav.top .links a { color: var(--muted); text-decoration: none; font-size: 15px; }
+nav.top .links a:hover { color: var(--accent); }
+.hero { position: relative; overflow: hidden; }
+#blink { position: absolute; inset: 0; width: 100%; height: 100%; display: none; }
+.hero-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 168px 1fr; gap: 44px; align-items: center; padding-top: 110px; padding-bottom: 90px; }
+.avatar { width: 168px; height: 168px; border-radius: 50%; display: grid; place-items: center; font-size: 54px; }
+.eyebrow { margin: 0 0 10px; font-size: 14px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+h1 { margin: 0 0 16px; line-height: .95; }
+h2, h3 { margin: 0; }
+.role { color: var(--muted); margin: 0 0 22px; max-width: 560px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { text-decoration: none; font-size: 14px; padding: 7px 14px; color: var(--text); }
+section { padding: 72px 0; }
+section > * { min-width: 0; }
+a[href^="mailto"] { overflow-wrap: anywhere; }
+.sec-label { margin-bottom: 26px; }
+.sec-label .num { margin-right: 10px; }
+.lead { font-size: 21px; line-height: 1.55; margin-top: 0; }
+.cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.card { overflow: hidden; }
+.card-art { aspect-ratio: 16 / 9; }
+.card-text { padding: 20px 22px 24px; }
+.card-text h3 { font-size: 21px; margin: 6px 0 8px; }
+.card-text p { margin: 0; color: var(--muted); font-size: 15.5px; }
+.tag { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+ol.pubs { list-style: none; margin: 0; padding: 0; }
+ol.pubs li { display: grid; grid-template-columns: 76px 1fr; gap: 20px; padding: 18px 0; }
+.year { font-variant-numeric: tabular-nums; }
+.pub-title { font-weight: 600; }
+.pub-meta { color: var(--muted); font-size: 15px; }
+.me { color: var(--text); font-weight: 700; }
+.pub-links { display: flex; gap: 6px; margin-top: 8px; }
+.pub-links a { font-size: 12.5px; text-decoration: none; padding: 2px 10px; }
+footer { padding: 40px 0 140px; color: var(--muted); font-size: 14px; }
+
+/* switcher (preview only) */
+.switcher { position: fixed; left: 50%; bottom: 14px; transform: translateX(-50%); z-index: 50; display: grid; gap: 4px; padding: 6px;
+  background: rgba(18,18,22,.94); border-radius: 18px; box-shadow: 0 8px 30px rgba(0,0,0,.35); font: 500 12.5px/1 Inter, system-ui, sans-serif; max-width: calc(100% - 20px); }
+.switcher .row { display: flex; gap: 3px; align-items: center; overflow-x: auto; }
+.switcher .grp { color: #7d8390; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; padding: 0 8px 0 6px; white-space: nowrap; width: 92px; flex: none; }
+.switcher button { border: 0; background: transparent; color: #cfd3da; padding: 8px 12px; border-radius: 999px; cursor: pointer; font: inherit; white-space: nowrap; }
+.switcher button:hover { background: rgba(255,255,255,.08); }
+.switcher button[aria-pressed="true"] { background: #fff; color: #111; }
+
+@media (max-width: 680px) {
+  body { font-size: 16px; }
+  nav.top .name { display: none; }
+  nav.top .links { width: 100%; justify-content: space-between; gap: 0; }
+  .hero-inner { grid-template-columns: 1fr; gap: 24px; padding-top: 56px; padding-bottom: 56px; }
+  .avatar { width: 112px; height: 112px; font-size: 38px; }
+  .cards { grid-template-columns: 1fr; }
+  ol.pubs li { grid-template-columns: 1fr; gap: 4px; }
+  section { padding: 52px 0; }
+  .switcher .grp { width: auto; }
+}
+
+/* =====================================================================
+   FLUORESCENCE family: layout shared, palette from variables
+   ===================================================================== */
+[data-theme="fl-classic"] { --bg: #07080c; --surface: rgba(255,255,255,.025); --text: #e9edf3; --muted: #8e97a8; --line: rgba(255,255,255,.09);
+  --accent: #46e3ff; --c1: 255,61,242; --c2: 77,255,154; --c3: 70,227,255;
+  --h1: linear-gradient(100deg, #fff 30%, rgb(var(--c1)) 70%, rgb(var(--c3))); --h1w: 700; --display: "Space Grotesk"; }
+[data-theme="fl-gfp"] { --bg: #040806; --surface: rgba(120,255,170,.03); --text: #e4f1e8; --muted: #84a08f; --line: rgba(140,255,180,.12);
+  --accent: #5dff8f; --c1: 93,255,143; --c2: 40,200,110; --c3: 190,255,215;
+  --h1: linear-gradient(100deg, #fff 45%, #5dff8f); --h1w: 300; --display: "Space Grotesk"; }
+[data-theme="fl-fire"] { --bg: #0b0604; --surface: rgba(255,170,60,.035); --text: #f6ece2; --muted: #ad9a8b; --line: rgba(255,190,120,.12);
+  --accent: #ffb020; --c1: 255,70,20; --c2: 255,165,30; --c3: 255,236,150;
+  --h1: linear-gradient(100deg, #fff4cf 20%, #ffb020 55%, #ff4a1a); --h1w: 700; --display: "Space Grotesk"; }
+[data-theme="fl-light"] { --bg: #f6f6f3; --surface: #ffffff; --text: #121418; --muted: #5b636e; --line: rgba(0,0,0,.09);
+  --accent: #b5148f; --c1: 200,20,150; --c2: 0,150,130; --c3: 40,90,210;
+  --h1: linear-gradient(100deg, #121418 35%, rgb(var(--c1)) 70%, rgb(var(--c3))); --h1w: 700; --display: "Space Grotesk"; }
+
+[data-family="fl"] { --body: "Space Grotesk", system-ui, sans-serif; }
+[data-family="fl"] nav.top { background: color-mix(in srgb, var(--bg) 72%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+[data-family="fl"] #blink { display: block; }
+[data-family="fl"] .hero { border-bottom: 1px solid var(--line); }
+[data-family="fl"] .hero::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(90deg, var(--bg) 0%, color-mix(in srgb, var(--bg) 78%, transparent) 45%, transparent 100%); }
+[data-family="fl"] .avatar { background: var(--bg); color: var(--text); font-weight: 500;
+  box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px rgb(var(--c1)), 0 0 40px rgba(var(--c1),.45); }
+[data-family="fl"] .eyebrow { font-family: "JetBrains Mono", monospace; color: rgb(var(--c2)); letter-spacing: .06em; text-transform: none; }
+[data-family="fl"] .eyebrow::before { content: "● "; animation: pulse 1.6s infinite; }
+@keyframes pulse { 50% { opacity: .2; } }
+[data-family="fl"] h1 { font-family: var(--display), sans-serif; font-size: clamp(52px, 9vw, 96px); font-weight: var(--h1w); letter-spacing: -.04em;
+  background: var(--h1); -webkit-background-clip: text; background-clip: text; color: transparent; padding-bottom: .05em; }
+[data-family="fl"] .chip { border: 1px solid var(--line); border-radius: 999px; background: var(--surface); }
+[data-family="fl"] .chip:hover { border-color: var(--accent); color: var(--accent); box-shadow: 0 0 20px rgba(var(--c3),.25); }
+[data-family="fl"] .sec-label { font-family: "JetBrains Mono", monospace; font-size: 14px; color: var(--accent); }
+[data-family="fl"] .sec-label h2 { display: inline; font: inherit; color: var(--text); text-transform: lowercase; }
+[data-family="fl"] .sec-label .num::after { content: " //"; color: var(--muted); }
+[data-family="fl"] .card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; transition: box-shadow .3s, border-color .3s; }
+[data-family="fl"] .card:hover { border-color: rgba(var(--c3),.55); box-shadow: 0 0 40px rgba(var(--c3),.14); }
+[data-family="fl"] .card-art { background-color: #000; }
+[data-family="fl"] .card:nth-child(1) .card-art { background-image: radial-gradient(ellipse 18% 10% at 30% 45%, rgb(var(--c2)), transparent 70%), radial-gradient(ellipse 12% 8% at 62% 60%, rgb(var(--c2)), transparent 70%), radial-gradient(ellipse 50% 40% at 50% 50%, rgba(var(--c1),.35), transparent 70%); }
+[data-family="fl"] .card:nth-child(2) .card-art { background-image: radial-gradient(circle at 20% 30%, rgb(var(--c3)) 0 3px, transparent 4px), radial-gradient(circle at 70% 40%, rgb(var(--c1)) 0 3px, transparent 4px), radial-gradient(circle at 45% 70%, rgb(var(--c2)) 0 3px, transparent 4px), radial-gradient(circle, rgba(var(--c3),.5) 0 1.5px, transparent 2px); background-size: auto, auto, auto, 18px 18px; }
+[data-family="fl"] .card:nth-child(3) .card-art { background-image: linear-gradient(90deg, transparent 49.5%, rgba(255,255,255,.25) 50%, transparent 50.5%), radial-gradient(ellipse 22% 30% at 25% 50%, rgba(var(--c1),.8), transparent 70%), radial-gradient(ellipse 10% 30% at 72% 38%, rgb(var(--c1)), transparent 70%), radial-gradient(ellipse 10% 30% at 80% 64%, rgb(var(--c1)), transparent 70%); }
+[data-family="fl"] .card:nth-child(4) .card-art { background-image: radial-gradient(ellipse 40% 7% at 35% 40%, rgb(var(--c2)), transparent 70%), radial-gradient(ellipse 25% 6% at 70% 62%, rgb(var(--c2)), transparent 70%), radial-gradient(ellipse 15% 5% at 25% 72%, rgb(var(--c2)), transparent 70%), radial-gradient(circle at 60% 30%, rgba(var(--c1),.6), transparent 25%); }
+[data-family="fl"] .tag { font-family: "JetBrains Mono", monospace; color: rgb(var(--c2)); text-transform: none; letter-spacing: 0; }
+[data-family="fl"] .tag::before { content: "#"; opacity: .6; }
+[data-family="fl"] ol.pubs li { border-top: 1px solid var(--line); }
+[data-family="fl"] .year { font-family: "JetBrains Mono", monospace; color: rgb(var(--c1)); font-size: 15px; padding-top: 2px; }
+[data-family="fl"] .pub-links a { border: 1px solid var(--line); border-radius: 999px; font-family: "JetBrains Mono", monospace; }
+[data-family="fl"] .pub-links a:hover { border-color: var(--accent); }
+[data-family="fl"] section + section { border-top: 1px solid var(--line); }
+[data-family="fl"] footer { border-top: 1px solid var(--line); font-family: "JetBrains Mono", monospace; }
+
+/* GFP: single channel, lighter display weight, calmer */
+[data-theme="fl-gfp"] .avatar { box-shadow: 0 0 0 2px var(--bg), 0 0 0 3px rgba(var(--c1),.8), 0 0 50px rgba(var(--c1),.3); font-weight: 300; }
+[data-theme="fl-gfp"] .sec-label .num::after { content: " ·"; }
+/* Fire LUT: warm, a heat-map feel */
+[data-theme="fl-fire"] .card-art { background-color: #120502; }
+[data-theme="fl-fire"] .avatar { box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px #ff7a1a, 0 0 50px rgba(255,90,20,.5); }
+/* Light: a printed micrograph, inks on paper */
+[data-theme="fl-light"] .card-art { background-color: #0b0c10; }
+[data-theme="fl-light"] .avatar { background: #fff; box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px rgb(var(--c1)), 0 10px 30px rgba(var(--c1),.25); }
+[data-theme="fl-light"] .card { box-shadow: 0 1px 3px rgba(0,0,0,.04); }
+[data-theme="fl-light"] .card-art { border-bottom: 1px solid var(--line); }
+
+/* =====================================================================
+   SWISS family
+   ===================================================================== */
+[data-theme="sw-red"]    { --bg: #ffffff; --text: #0b0b0b; --muted: #5c5c5c; --accent: #e3000f; --on-accent: #fff; --art-bg: #fff; }
+[data-theme="sw-klein"]  { --bg: #f3f0e8; --text: #0b0b0b; --muted: #55534d; --accent: #002fa7; --on-accent: #fff; --art-bg: #f3f0e8; }
+[data-theme="sw-night"]  { --bg: #0b0b0b; --text: #f2f2f2; --muted: #a0a0a0; --accent: #ffd400; --on-accent: #0b0b0b; --art-bg: #0b0b0b; }
+[data-theme="sw-signal"] { --bg: #ffffff; --text: #0b0b0b; --muted: #5c5c5c; --accent: #e6007e; --on-accent: #fff; --art-bg: #000;
+  --c1: 255,43,214; --c2: 60,255,140; --c3: 60,220,255; }
+
+[data-family="sw"] { --body: "Archivo", "Helvetica Neue", Arial, sans-serif; --line: var(--text); }
+[data-family="sw"] nav.top { background: var(--bg); border-bottom: 2px solid var(--text); }
+[data-family="sw"] nav.top .name { font-weight: 900; text-transform: uppercase; letter-spacing: -.01em; }
+[data-family="sw"] nav.top .links a { color: var(--text); font-weight: 500; text-transform: uppercase; font-size: 13px; letter-spacing: .04em; }
+[data-family="sw"] nav.top .links a:hover { color: var(--accent); }
+[data-family="sw"] .hero { border-bottom: 2px solid var(--text); }
+[data-family="sw"] .hero-inner { grid-template-columns: 1fr; gap: 0; padding-top: 60px; padding-bottom: 48px; }
+[data-family="sw"] .avatar { position: absolute; right: 24px; top: 60px; width: 150px; height: 150px; border-radius: 0; background: var(--accent); color: var(--on-accent); font-weight: 900; font-size: 56px; }
+[data-family="sw"] .eyebrow { font-weight: 800; color: var(--accent); letter-spacing: .02em; font-size: 15px; }
+[data-family="sw"] h1 { font-weight: 900; text-transform: uppercase; font-size: clamp(60px, 13.5vw, 156px); letter-spacing: -.055em; line-height: .82; margin-bottom: 36px; }
+[data-family="sw"] .role { font-size: 19px; color: var(--text); max-width: 520px; font-weight: 500; }
+[data-family="sw"] .chip { border: 2px solid var(--text); font-weight: 800; text-transform: uppercase; font-size: 12.5px; letter-spacing: .04em; padding: 8px 14px; }
+[data-family="sw"] .chip:hover { background: var(--text); color: var(--bg); }
+[data-family="sw"] section { display: grid; grid-template-columns: 1fr 3fr; gap: 24px; border-bottom: 2px solid var(--text); padding: 56px 0; }
+[data-family="sw"] .sec-label { font-weight: 900; text-transform: uppercase; font-size: 15px; }
+[data-family="sw"] .sec-label h2 { display: inline; font: inherit; }
+[data-family="sw"] .sec-label .num { color: var(--accent); }
+[data-family="sw"] .lead { font-size: 30px; line-height: 1.15; font-weight: 800; letter-spacing: -.02em; }
+[data-family="sw"] .cards { gap: 0; border: 2px solid var(--text); }
+[data-family="sw"] .card:nth-child(odd) { border-right: 2px solid var(--text); }
+[data-family="sw"] .card:nth-child(-n+2) { border-bottom: 2px solid var(--text); }
+[data-family="sw"] .card-art { border-bottom: 2px solid var(--text); background-color: var(--art-bg); }
+[data-family="sw"] .card:nth-child(1) .card-art { background-image: radial-gradient(circle at 50% 50%, var(--accent) 0 26%, transparent 26.3%); }
+[data-family="sw"] .card:nth-child(2) .card-art { background-image: linear-gradient(var(--text), var(--text)), linear-gradient(var(--text), var(--text)), linear-gradient(var(--text), var(--text)); background-size: 20% 100%, 20% 60%, 20% 30%; background-position: 15% 100%, 50% 100%, 85% 100%; background-repeat: no-repeat; }
+[data-family="sw"] .card:nth-child(3) .card-art { background-image: linear-gradient(135deg, var(--text) 50%, transparent 50%), radial-gradient(circle at 75% 70%, var(--accent) 0 14%, transparent 14.3%); background-size: 40% 70%, 100% 100%; background-repeat: no-repeat; background-position: 10% 20%, 0 0; }
+[data-family="sw"] .card:nth-child(4) .card-art { background-image: repeating-linear-gradient(90deg, var(--text) 0 6px, transparent 6px 24px); background-color: var(--accent); }
+[data-family="sw"] .card-text h3 { font-weight: 900; text-transform: uppercase; font-size: 19px; letter-spacing: -.01em; }
+[data-family="sw"] .tag { font-weight: 800; color: var(--accent); }
+[data-family="sw"] ol.pubs li { border-top: 2px solid var(--text); }
+[data-family="sw"] ol.pubs li:first-child { border-top: 0; padding-top: 0; }
+[data-family="sw"] .year { font-weight: 900; font-size: 22px; color: var(--accent); }
+[data-family="sw"] .pub-title { font-weight: 800; font-size: 18px; }
+[data-family="sw"] .pub-links a { border: 2px solid var(--text); color: var(--text); font-weight: 800; text-transform: uppercase; font-size: 11px; }
+[data-family="sw"] .pub-links a:hover { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+[data-family="sw"] footer { font-weight: 800; text-transform: uppercase; font-size: 12px; color: var(--text); }
+
+/* Klein: blue name, circle instead of square, warmer paper */
+[data-theme="sw-klein"] h1 { color: var(--accent); }
+[data-theme="sw-klein"] .avatar { border-radius: 50%; }
+[data-theme="sw-klein"] .card:nth-child(2) .card-art { background-image: linear-gradient(var(--accent), var(--accent)), linear-gradient(var(--text), var(--text)), linear-gradient(var(--accent), var(--accent)); }
+
+/* Signal: Swiss grid with a black "microscope" hero and fluorescent accents */
+[data-theme="sw-signal"] #blink { display: block; }
+[data-theme="sw-signal"] .hero { background: #000; color: #fff; }
+[data-theme="sw-signal"] .hero::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, #000 0%, rgba(0,0,0,.7) 50%, transparent 100%); }
+[data-theme="sw-signal"] .hero .role { color: #fff; }
+[data-theme="sw-signal"] .hero .chip { border-color: #fff; color: #fff; }
+[data-theme="sw-signal"] .hero .chip:hover { background: #fff; color: #000; }
+[data-theme="sw-signal"] .eyebrow { color: rgb(var(--c2)); }
+[data-theme="sw-signal"] .avatar { background: transparent; border: 2px solid rgb(var(--c1)); color: rgb(var(--c1)); box-shadow: 0 0 40px rgba(var(--c1),.45), inset 0 0 30px rgba(var(--c1),.25); }
+[data-theme="sw-signal"] .card:nth-child(1) .card-art { background-image: radial-gradient(circle at 50% 50%, rgb(var(--c1)) 0 22%, transparent 34%); }
+[data-theme="sw-signal"] .card:nth-child(2) .card-art { background-image: radial-gradient(circle, rgb(var(--c3)) 0 1.6px, transparent 2.2px); background-size: 16px 16px; background-repeat: repeat; background-position: 0 0; }
+[data-theme="sw-signal"] .card:nth-child(3) .card-art { background-image: linear-gradient(135deg, #fff 50%, transparent 50%), radial-gradient(circle at 75% 70%, rgb(var(--c2)) 0 10%, transparent 20%); }
+[data-theme="sw-signal"] .card:nth-child(4) .card-art { background-image: repeating-linear-gradient(90deg, rgb(var(--c2)) 0 3px, transparent 3px 24px); background-color: #000; }
+
+@media (max-width: 680px) {
+  [data-family="sw"] .avatar { position: static; width: 96px; height: 96px; font-size: 36px; margin-bottom: 24px; }
+  [data-family="sw"] section { grid-template-columns: 1fr; }
+  [data-family="sw"] .card { border-right: 0 !important; border-bottom: 2px solid var(--text); }
+  [data-family="sw"] .card:last-child { border-bottom: 0; }
+  [data-family="sw"] .lead { font-size: 24px; }
+}
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+</head>
+<body>
+<nav class="top"><div class="wrap">
+  <a class="name" href="#top">Dora Mahecic</a>
+  <div class="links"><a href="#about">About</a><a href="#research">Research</a><a href="#publications">Publications</a><a href="#contact">Contact</a></div>
+</div></nav>
+
+<header class="hero" id="top">
+  <canvas id="blink" aria-hidden="true"></canvas>
+  <div class="wrap hero-inner">
+    <div class="avatar" aria-hidden="true">DM</div>
+    <div>
+      <p class="eyebrow">Physicist · Quantitative biologist</p>
+      <h1>Dora<br>Mahecic</h1>
+      <p class="role">Research Associate in the Paulsson lab, Department of Systems Biology, Harvard Medical School.</p>
+      <div class="chips">
+        <a class="chip" href="mailto:dora_mahecic@hms.harvard.edu">Email</a>
+        <a class="chip" href="https://github.com/dmahecic">GitHub</a>
+        <a class="chip" href="https://twitter.com/Dora_Mahecic">X</a>
+        <a class="chip" href="https://scholar.google.com/citations?user=FAnKd20AAAAJ">Scholar</a>
+        <a class="chip" href="https://orcid.org/0000-0003-1004-4771">ORCID</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="about">
+    <div class="sec-label"><span class="num">01</span><h2>About</h2></div>
+    <div class="sec-body">
+      <p class="lead">I'm a physicist with a passion for experimental and quantitative biology. I build and apply new microscopy strategies to uncover the physical rules that govern biological processes.</p>
+      <p>As a Research Associate in the lab of <a href="https://paulsson.hms.harvard.edu/">Prof. Johan Paulsson</a> at Harvard Medical School, I combine advanced microscopy with microfluidics to study how plasmids control their own replication.</p>
+      <p>For my PhD with <a href="https://www.epfl.ch/labs/leb/">Prof. Suliana Manley</a> at EPFL, I developed high-throughput and adaptive super-resolution methods, and used them to look at organelles in new ways, from the architecture of centrioles to randomness in mitochondrial division.</p>
+    </div>
+  </section>
+
+  <section id="research">
+    <div class="sec-label"><span class="num">02</span><h2>Research</h2></div>
+    <div class="cards">
+      <div class="card"><div class="card-art"></div><div class="card-text"><span class="tag">Current</span><h3>Plasmid replication control</h3><p>Single-cell imaging and microfluidics to investigate how plasmids control their own replication.</p></div></div>
+      <div class="card"><div class="card-art"></div><div class="card-text"><span class="tag">Methods</span><h3>High-throughput super-resolution</h3><p>Homogeneous multifocal illumination that turns super-resolution into a large field-of-view technique.</p></div></div>
+      <div class="card"><div class="card-art"></div><div class="card-text"><span class="tag">Methods</span><h3>Event-driven microscopy</h3><p>Smart microscopes that detect rare events in real time and adapt acquisition on the fly.</p></div></div>
+      <div class="card"><div class="card-art"></div><div class="card-text"><span class="tag">Biology</span><h3>Mitochondrial dynamics</h3><p>Live-cell super-resolution imaging of where and why mitochondria divide, and the role of chance in fission.</p></div></div>
+    </div>
+  </section>
+
+  <section id="publications">
+    <div class="sec-label"><span class="num">03</span><h2>Publications</h2></div>
+    <ol class="pubs">
+      <li><span class="year">2022</span><div><div class="pub-title">Event-driven acquisition for content-enriched microscopy</div><div class="pub-meta"><span class="me">Mahecic D</span>, Stepp WL, Zhang C, Griffié J, Weigert M, Manley S · <em>Nature Methods</em></div><div class="pub-links"><a href="https://doi.org/10.1038/s41592-022-01589-x">Paper</a><a href="https://github.com/dmahecic/EDA">Code</a></div></div></li>
+      <li><span class="year">2021</span><div><div class="pub-title">Distinct fission signatures predict mitochondrial degradation or biogenesis</div><div class="pub-meta">Kleele T, Rey T, Winter J, Zaganelli S, <span class="me">Mahecic D</span>, … Manley S · <em>Nature</em></div><div class="pub-links"><a href="https://doi.org/10.1038/s41586-021-03510-6">Paper</a></div></div></li>
+      <li><span class="year">2021</span><div><div class="pub-title">Mitochondrial membrane tension governs fission</div><div class="pub-meta"><span class="me">Mahecic D</span>, Carlini L, Kleele T, … Roux A, Manley S · <em>Cell Reports</em></div><div class="pub-links"><a href="https://doi.org/10.1016/j.celrep.2021.108947">Paper</a><a href="https://doi.org/10.5281/zenodo.4648097">Data</a></div></div></li>
+      <li><span class="year">2020</span><div><div class="pub-title">Homogeneous multifocal excitation for high-throughput super-resolution imaging</div><div class="pub-meta"><span class="me">Mahecic D</span>, Gambarotto D, Douglass KM, … Guichard P, Manley S · <em>Nature Methods</em></div><div class="pub-links"><a href="https://doi.org/10.1038/s41592-020-0859-z">Paper</a><a href="https://github.com/dmahecic/simmla_w_mfFIFI">Code</a><a href="https://doi.org/10.5281/zenodo.3613906">Data</a></div></div></li>
+    </ol>
+  </section>
+
+  <section id="contact">
+    <div class="sec-label"><span class="num">04</span><h2>Contact</h2></div>
+    <div class="sec-body"><p class="lead" style="margin:0">Always happy to talk microscopy, single-cell biophysics or collaborations: <a href="mailto:dora_mahecic@hms.harvard.edu">dora_mahecic@hms.harvard.edu</a></p></div>
+  </section>
+</main>
+<footer><div class="wrap">© Dora Mahecic · Hosted on GitHub Pages</div></footer>
+
+<div class="switcher" role="group" aria-label="Theme preview">
+  <div class="row"><span class="grp">Fluorescence</span>
+    <button data-t="fl-classic">Classic</button><button data-t="fl-gfp">GFP</button><button data-t="fl-fire">Fire LUT</button><button data-t="fl-light">Light print</button></div>
+  <div class="row"><span class="grp">Swiss grid</span>
+    <button data-t="sw-red">Red</button><button data-t="sw-klein">Klein blue</button><button data-t="sw-night">Night</button><button data-t="sw-signal">Signal</button></div>
+</div>
+
+<script>
+const THEMES = ['fl-classic','fl-gfp','fl-fire','fl-light','sw-red','sw-klein','sw-night','sw-signal'];
+const root = document.documentElement, btns = document.querySelectorAll('.switcher button');
+function setTheme(t) {
+  root.dataset.theme = t; root.dataset.family = t.slice(0, 2);
+  btns.forEach(b => b.setAttribute('aria-pressed', b.dataset.t === t));
+  if (location.hash.slice(1) !== t) history.replaceState(null, '', '#' + t);
+  requestAnimationFrame(() => getComputedStyle(cv).display === 'none' ? stopBlink() : startBlink());
+}
+btns.forEach(b => b.onclick = () => setTheme(b.dataset.t));
+
+// Hero animation: emitters along mitochondria-like filaments blink on and fade,
+// slowly accumulating a "super-resolved" image, like single-molecule localization microscopy.
+const cv = document.getElementById('blink'), ctx = cv.getContext('2d');
+let pts = [], raf = null, acc, dpr = 1;
+function build() {
+  const r = cv.getBoundingClientRect(); dpr = Math.min(devicePixelRatio || 1, 2);
+  cv.width = r.width * dpr; cv.height = r.height * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  acc = document.createElement('canvas'); acc.width = cv.width; acc.height = cv.height; acc.getContext('2d').setTransform(dpr, 0, 0, dpr, 0, 0);
+  const cs = getComputedStyle(root), cols = ['--c1', '--c2', '--c3'].map(v => cs.getPropertyValue(v).trim());
+  pts = [];
+  const W = r.width, H = r.height;
+  for (let f = 0; f < 14; f++) {
+    const x0 = W * (0.35 + Math.random() * 0.7), y0 = H * Math.random(), ang = Math.random() * Math.PI * 2,
+          len = 80 + Math.random() * 220, bend = (Math.random() - .5) * 2.2,
+          col = cols[f % 3 === 0 ? 0 : (Math.random() < .7 ? 1 : 2)];
+    const n = len / 2.2;
+    for (let i = 0; i < n; i++) {
+      const t = i / n, a = ang + bend * t;
+      pts.push({ x: x0 + Math.cos(a) * t * len + (Math.random() - .5) * 7, y: y0 + Math.sin(a) * t * len + (Math.random() - .5) * 7, c: col, on: 0 });
+    }
+  }
+}
+function frame() {
+  ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, cv.width, cv.height); ctx.globalAlpha = .6; ctx.drawImage(acc, 0, 0); ctx.restore();
+  const a = acc.getContext('2d');
+  for (const p of pts) {
+    if (p.on <= 0 && Math.random() < 0.004) { p.on = 1; a.fillStyle = `rgba(${p.c},.2)`; a.beginPath(); a.arc(p.x, p.y, 1.2, 0, 7); a.fill(); }
+    if (p.on > 0) {
+      const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, 7);
+      g.addColorStop(0, `rgba(${p.c},${p.on})`); g.addColorStop(1, `rgba(${p.c},0)`);
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(p.x, p.y, 7, 0, 7); ctx.fill();
+      p.on -= 0.035;
+    }
+  }
+  raf = requestAnimationFrame(frame);
+}
+function startBlink() {
+  stopBlink(); build();
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const a = acc.getContext('2d');
+    for (const p of pts) if (Math.random() < .5) { a.fillStyle = `rgba(${p.c},.5)`; a.fillRect(p.x, p.y, 1.5, 1.5); }
+    ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.drawImage(acc, 0, 0); ctx.restore(); return;
+  }
+  frame();
+}
+function stopBlink() { if (raf) cancelAnimationFrame(raf); raf = null; }
+addEventListener('hashchange', () => { const t = location.hash.slice(1); if (THEMES.includes(t) && t !== root.dataset.theme) setTheme(t); });
+addEventListener('resize', () => { if (raf) startBlink(); });
+setTheme(THEMES.includes(location.hash.slice(1)) ? location.hash.slice(1) : 'fl-classic');
+</script>
+</body>
+</html>

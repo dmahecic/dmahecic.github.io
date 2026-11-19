@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Event-driven microscopy · Dora Mahecic</title>
+  <meta name="description" content="Smart microscopes that recognise biological events in real time and adapt how they image.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23002fa7'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='900' fill='white' text-anchor='middle'%3EDM%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <nav>
+    <div class="wrap">
+      <a class="name" href="../">Dora Mahecic</a>
+      <a class="link" href="../#about">About</a>
+      <a class="link" href="../#research">Research</a>
+      <a class="link" href="../#publications">Publications</a>
+      <a class="link" href="../#contact">Contact</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <div class="crumb"><a href="../#research">← All research</a></div>
+    <article class="detail">
+      <span class="tag">Methods</span>
+      <h1>Adaptive, event-driven microscopy</h1>
+      <p class="lead">A microscope that watches for the moment something interesting starts, then speeds up to capture it, and slows down again to spare the sample.</p>
+
+      <figure>
+        <img src="../images/event-driven.jpg" alt="" onerror="this.closest('figure').remove()">
+      </figure>
+
+      <h2>The problem</h2>
+      <p>Fluorescence microscopy is usually run at a fixed frame rate. For rare or unpredictable events, such as a mitochondrion dividing, that forces a bad trade-off. Image fast and the light bleaches the dyes and damages the cell long before the event happens. Image slowly and the event is over between two frames. Most of the light dose ends up spent on frames that contain nothing of interest.</p>
+
+      <h2>Approach</h2>
+      <p>We built an event-driven acquisition framework on an instant structured illumination microscope (iSIM). A neural network analyses each image as it arrives and recognises the onset of a specific biological event. The microscope then changes its own acquisition in real time. It images slowly while it waits for an event, and switches to a fast rate while the event unfolds.</p>
+
+      <h2>What it enables</h2>
+      <p>With this approach we captured mitochondrial and bacterial divisions at frame rates that match how fast they happen, while extending how long a sample can be imaged overall. Because the microscope responds to the biology itself, the data it collects is enriched in the content you actually care about.</p>
+
+      <h2>Key paper</h2>
+      <ol class="pubs">
+        <li><div class="pub-title">Event-driven acquisition for content-enriched microscopy</div>
+            <div class="pub-meta"><span class="me">Mahecic D</span>, Stepp WL, Zhang C, Griffié J, Weigert M, Manley S · <em>Nature Methods</em> 19, 1262–1267 (2022)</div>
+            <div class="pub-links"><a href="https://doi.org/10.1038/s41592-022-01589-x">Paper</a><a href="https://github.com/dmahecic/EDA">Code</a></div></li>
+      </ol>
+    </article>
+
+    <div class="next">
+      <a href="super-resolution.html">← High-throughput super-resolution</a>
+      <a href="mitochondria.html">Mitochondrial dynamics →</a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">© Dora Mahecic · Hosted on GitHub Pages</div>
+  </footer>
+</body>
+</html>
