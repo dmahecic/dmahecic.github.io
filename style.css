@@ -1,17 +1,16 @@
 /* =========================================================
-   Signal theme: Swiss grid + fluorescence accents
+   Klein blue theme: Swiss grid on warm paper
    Backups of other looks live in _design/
    ========================================================= */
 :root {
-  --bg: #ffffff; --text: #0b0b0b; --muted: #5c5c5c; --rule: #0b0b0b;
-  --accent: #d1007a;            /* magenta, readable on white */
-  --glow-1: 255, 43, 214;       /* fluorescent magenta */
-  --glow-2: 60, 255, 140;       /* fluorescent green */
-  --glow-3: 60, 220, 255;       /* fluorescent cyan */
-  --todo-bg: #fff0f8;
+  --bg: #f3f0e8; --text: #0b0b0b; --muted: #55534d; --rule: #0b0b0b;
+  --accent: #002fa7;            /* International Klein Blue */
+  --on-accent: #ffffff;
+  --todo-bg: #e3e8f6;
 }
 @media (prefers-color-scheme: dark) {
-  :root { --bg: #0b0b0b; --text: #f2f2f2; --muted: #a3a3a3; --rule: #f2f2f2; --accent: #ff4fd8; --todo-bg: #2a0d22; }
+  :root { --bg: #0c0f1c; --text: #f0ede6; --muted: #a5a8b4; --rule: #f0ede6;
+          --accent: #8aa4ff; --on-accent: #0c0f1c; --todo-bg: #18204a; }
 }
 
 * { box-sizing: border-box; }
@@ -29,24 +28,20 @@ nav .name { margin-right: auto; color: var(--text); text-decoration: none; font-
 nav a.link { color: var(--text); text-decoration: none; font-weight: 500; font-size: 13px; text-transform: uppercase; letter-spacing: .04em; white-space: nowrap; }
 nav a.link:hover { color: var(--accent); }
 
-/* ---------- hero: black "microscope" panel ---------- */
-header.hero { position: relative; overflow: hidden; background: #000; color: #fff; border-bottom: 2px solid var(--rule); }
-#blink { position: absolute; inset: 0; width: 100%; height: 100%; }
-header.hero::after { content: ""; position: absolute; inset: 0; pointer-events: none;
-  background: linear-gradient(90deg, #000 0%, rgba(0,0,0,.72) 50%, transparent 100%); }
-.hero-inner { position: relative; z-index: 1; padding-top: 64px; padding-bottom: 52px; }
-.avatar { position: absolute; right: 24px; top: 64px; width: 150px; height: 150px; overflow: hidden;
-  display: grid; place-items: center; border: 2px solid rgb(var(--glow-1)); color: rgb(var(--glow-1));
-  font-weight: 900; font-size: 56px; box-shadow: 0 0 40px rgba(var(--glow-1), .45), inset 0 0 30px rgba(var(--glow-1), .25); }
+/* ---------- hero ---------- */
+header.hero { position: relative; border-bottom: 2px solid var(--rule); }
+.hero-inner { position: relative; padding-top: 64px; padding-bottom: 52px; }
+.avatar { position: absolute; right: 24px; top: 64px; width: 150px; height: 150px; overflow: hidden; border-radius: 50%;
+  display: grid; place-items: center; background: var(--accent); color: var(--on-accent); font-weight: 900; font-size: 56px; }
 .avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.eyebrow { margin: 0 0 10px; color: rgb(var(--glow-2)); font-weight: 800; font-size: 15px; text-transform: uppercase; letter-spacing: .02em; }
-header.hero h1 { font-weight: 900; text-transform: uppercase; font-size: clamp(60px, 13.5vw, 156px);
+.eyebrow { margin: 0 0 10px; color: var(--accent); font-weight: 800; font-size: 15px; text-transform: uppercase; letter-spacing: .02em; }
+header.hero h1 { color: var(--accent); font-weight: 900; text-transform: uppercase; font-size: clamp(60px, 13.5vw, 156px);
   letter-spacing: -.055em; line-height: .82; margin-bottom: 34px; }
 .role { max-width: 540px; margin: 0 0 22px; font-size: 19px; font-weight: 500; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-.chip { display: inline-flex; align-items: center; gap: 7px; padding: 8px 14px; border: 2px solid #fff; color: #fff;
+.chip { display: inline-flex; align-items: center; gap: 7px; padding: 8px 14px; border: 2px solid var(--text); color: var(--text);
   text-decoration: none; font-weight: 800; font-size: 12.5px; text-transform: uppercase; letter-spacing: .04em; }
-.chip:hover { background: #fff; color: #000; }
+.chip:hover { background: var(--text); color: var(--bg); }
 .chip svg { width: 15px; height: 15px; fill: currentColor; }
 
 /* ---------- sections: label column + content column ---------- */
@@ -68,14 +63,16 @@ a[href^="mailto"] { overflow-wrap: anywhere; }
 .card:hover { background: color-mix(in srgb, var(--accent) 6%, var(--bg)); }
 .card-img, .card:not(:has(.card-img))::before {
   display: block; width: calc(100% + 44px); margin: -20px -22px 18px; aspect-ratio: 16 / 9; object-fit: cover;
-  background-color: #000; border-bottom: 2px solid var(--rule); }
-.card:not(:has(.card-img))::before { content: ""; }
-/* placeholder art until real images are added */
-.card:nth-child(1)::before { background-image: radial-gradient(circle at 50% 50%, rgb(var(--glow-1)) 0 22%, transparent 34%); }
-.card:nth-child(2)::before { background-image: radial-gradient(circle, rgb(var(--glow-3)) 0 1.6px, transparent 2.2px); background-size: 16px 16px; }
-.card:nth-child(3)::before { background-image: linear-gradient(135deg, #fff 50%, transparent 50%), radial-gradient(circle at 75% 70%, rgb(var(--glow-2)) 0 10%, transparent 20%);
-  background-size: 40% 70%, 100% 100%; background-repeat: no-repeat; background-position: 10% 20%, 0 0; }
-.card:nth-child(4)::before { background-image: repeating-linear-gradient(90deg, rgb(var(--glow-2)) 0 3px, transparent 3px 24px); }
+  background-color: var(--bg); border-bottom: 2px solid var(--rule); }
+.card-img { background-color: #000; }
+.card:not(:has(.card-img))::before { content: ""; background-repeat: no-repeat; }
+/* placeholder geometric art until real images are added */
+.card:nth-child(1)::before { background-image: radial-gradient(circle at 50% 50%, var(--accent) 0 26%, transparent 26.3%); }
+.card:nth-child(2)::before { background-image: linear-gradient(var(--accent), var(--accent)), linear-gradient(var(--text), var(--text)), linear-gradient(var(--accent), var(--accent));
+  background-size: 20% 100%, 20% 60%, 20% 30%; background-position: 15% 100%, 50% 100%, 85% 100%; }
+.card:nth-child(3)::before { background-image: linear-gradient(135deg, var(--text) 50%, transparent 50%), radial-gradient(circle at 75% 70%, var(--accent) 0 14%, transparent 14.3%);
+  background-size: 40% 70%, 100% 100%; background-position: 10% 20%, 0 0; }
+.card:nth-child(4)::before { background-image: repeating-linear-gradient(90deg, var(--text) 0 6px, transparent 6px 24px); background-color: var(--accent); background-repeat: repeat; }
 .tag { font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
 .card h3 { margin: 6px 0 8px; font-size: 19px; font-weight: 900; text-transform: uppercase; letter-spacing: -.01em; }
 .card h3 a { color: inherit; text-decoration: none; }
@@ -94,7 +91,7 @@ ol.pubs li:first-child { border-top: 0; padding-top: 0; }
 .pub-links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
 .pub-links a { padding: 2px 10px; border: 2px solid var(--rule); color: var(--text); text-decoration: none;
   font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; }
-.pub-links a:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+.pub-links a:hover { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
 
 footer { padding: 28px 0 44px; border-top: 2px solid var(--rule); font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; }
 

@@ -26,7 +26,7 @@
     "sameAs": ["https://github.com/dmahecic", "https://twitter.com/Dora_Mahecic", "https://orcid.org/0000-0003-1004-4771", "https://scholar.google.com/citations?user=FAnKd20AAAAJ"]
   }
   </script>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='black'/%3E%3Crect x='5' y='5' width='54' height='54' fill='none' stroke='%23ff2bd6' stroke-width='4'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='900' fill='%23ff2bd6' text-anchor='middle'%3EDM%3C/text%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23002fa7'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='900' fill='white' text-anchor='middle'%3EDM%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;800;900&display=swap" rel="stylesheet">
@@ -44,7 +44,6 @@
   </nav>
 
   <header class="hero" id="top">
-    <canvas id="blink" aria-hidden="true"></canvas>
     <div class="wrap hero-inner">
       <div class="avatar"><span aria-hidden="true">DM</span>
         <img src="images/portrait.jpg" alt="Portrait of Dora Mahecic" onerror="this.remove()">
@@ -158,65 +157,5 @@
     <div class="wrap">© Dora Mahecic · Hosted on GitHub Pages</div>
   </footer>
 
-  <script>
-  // Hero animation: emitters along mitochondria-like filaments blink on and fade,
-  // slowly building up a "super-resolved" image, like single-molecule localization microscopy.
-  (function () {
-    var cv = document.getElementById('blink'); if (!cv || !cv.getContext) return;
-    var ctx = cv.getContext('2d'), pts = [], raf = null, acc;
-    var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-    function build() {
-      var r = cv.getBoundingClientRect(), dpr = Math.min(window.devicePixelRatio || 1, 2);
-      cv.width = r.width * dpr; cv.height = r.height * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      acc = document.createElement('canvas'); acc.width = cv.width; acc.height = cv.height;
-      acc.getContext('2d').setTransform(dpr, 0, 0, dpr, 0, 0);
-      var cs = getComputedStyle(document.documentElement);
-      var cols = ['--glow-1', '--glow-2', '--glow-3'].map(function (v) { return cs.getPropertyValue(v).trim(); });
-      pts = [];
-      for (var f = 0; f < 14; f++) {
-        var x0 = r.width * (0.35 + Math.random() * 0.7), y0 = r.height * Math.random(), ang = Math.random() * Math.PI * 2,
-            len = 80 + Math.random() * 220, bend = (Math.random() - .5) * 2.2,
-            col = cols[f % 3 === 0 ? 0 : (Math.random() < .7 ? 1 : 2)], n = len / 2.2;
-        for (var i = 0; i < n; i++) {
-          var t = i / n, a = ang + bend * t;
-          pts.push({ x: x0 + Math.cos(a) * t * len + (Math.random() - .5) * 7, y: y0 + Math.sin(a) * t * len + (Math.random() - .5) * 7, c: col, on: 0 });
-        }
-      }
-    }
-    function frame() {
-      ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, cv.width, cv.height);
-      ctx.globalAlpha = .6; ctx.drawImage(acc, 0, 0); ctx.restore();
-      var a = acc.getContext('2d');
-      for (var k = 0; k < pts.length; k++) {
-        var p = pts[k];
-        if (p.on <= 0 && Math.random() < 0.004) { p.on = 1; a.fillStyle = 'rgba(' + p.c + ',.2)'; a.beginPath(); a.arc(p.x, p.y, 1.2, 0, 7); a.fill(); }
-        if (p.on > 0) {
-          var g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, 7);
-          g.addColorStop(0, 'rgba(' + p.c + ',' + p.on + ')'); g.addColorStop(1, 'rgba(' + p.c + ',0)');
-          ctx.fillStyle = g; ctx.beginPath(); ctx.arc(p.x, p.y, 7, 0, 7); ctx.fill();
-          p.on -= 0.035;
-        }
-      }
-      raf = requestAnimationFrame(frame);
-    }
-    function start() {
-      if (raf) cancelAnimationFrame(raf); raf = null; build();
-      if (reduce) {   // static "finished" image instead of animation
-        var a = acc.getContext('2d');
-        pts.forEach(function (p) { if (Math.random() < .5) { a.fillStyle = 'rgba(' + p.c + ',.5)'; a.fillRect(p.x, p.y, 1.5, 1.5); } });
-        ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.drawImage(acc, 0, 0); ctx.restore(); return;
-      }
-      frame();
-    }
-    // pause when the hero is scrolled out of view
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function (e) {
-        if (e[0].isIntersecting) { if (!raf) reduce ? null : frame(); } else if (raf) { cancelAnimationFrame(raf); raf = null; }
-      }).observe(cv);
-    }
-    var rt; addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(start, 200); });
-    start();
-  })();
-  </script>
 </body>
 </html>
