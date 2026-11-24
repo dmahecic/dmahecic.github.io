@@ -9,8 +9,9 @@
   --todo-bg: #e3e8f6;
 }
 @media (prefers-color-scheme: dark) {
-  :root { --bg: #0c0f1c; --text: #f0ede6; --muted: #a5a8b4; --rule: #f0ede6;
-          --accent: #8aa4ff; --on-accent: #0c0f1c; --todo-bg: #18204a; }
+  /* light mode inverted: Klein blue page with cream type (cream on blue is about 10:1) */
+  :root { --bg: #0b2a8c; --text: #f3f0e8; --muted: #c3cdf0; --rule: #f3f0e8;
+          --accent: #f3f0e8; --on-accent: #0b2a8c; --todo-bg: #1a3ba3; }
 }
 
 * { box-sizing: border-box; }
@@ -26,7 +27,7 @@ nav { position: sticky; top: 0; z-index: 10; background: var(--bg); border-botto
 nav .wrap { display: flex; gap: 26px; align-items: center; height: 58px; }
 nav .name { margin-right: auto; color: var(--text); text-decoration: none; font-weight: 900; text-transform: uppercase; white-space: nowrap; }
 nav a.link { color: var(--text); text-decoration: none; font-weight: 500; font-size: 13px; text-transform: uppercase; letter-spacing: .04em; white-space: nowrap; }
-nav a.link:hover { color: var(--accent); }
+nav a.link:hover { color: var(--accent); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 5px; }
 
 /* ---------- hero ---------- */
 header.hero { position: relative; border-bottom: 2px solid var(--rule); }
