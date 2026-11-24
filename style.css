@@ -1,6 +1,6 @@
 /* =========================================================
    Klein blue theme: Swiss grid on warm paper
-   Backups of other looks live in _design/
+   Earlier themes are in the git history (commit 46c7c6a and before)
    ========================================================= */
 :root {
   --bg: #f3f0e8; --text: #0b0b0b; --muted: #55534d; --rule: #0b0b0b;

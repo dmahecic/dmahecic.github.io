@@ -5,6 +5,7 @@ Drop files here with these exact names. Anything missing is simply hidden on the
 | File | Where it shows | Suggested size |
 |---|---|---|
 | `portrait.webp` | Round photo at the top (replaces the "DM" monogram); crop is set in style.css (`.avatar img`) | any |
+| `portrait-share.jpg` | Link previews (og:image) when the site is shared; 600×600 JPEG copy of the portrait | 600×600 |
 | `plasmids.png` | Research card: Plasmid replication control | 16:9, ~1200×675 |
 | `super-resolution.jpg` | Research card: High-throughput super-resolution | 16:9, ~1200×675 |
 | `EDA.jpg` | Research card: Adaptive, event-driven microscopy | 16:9, ~1200×675 |
